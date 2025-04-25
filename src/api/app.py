@@ -5,10 +5,12 @@ from src.api.routes.feature_engineering import router as feature_router
 from src.api.routes.data_ingestion import router as ingestion_router
 from src.api.routes.train import router as train_router
 from src.api.routes.predict import router as predict_router
+from src.api.routes.list_models import router as list_models_router
 
 
 app = FastAPI()
 
+app.include_router(list_models_router, prefix="/api")
 app.include_router(upload_router, prefix="/api")
 app.include_router(process_router, prefix="/api")
 app.include_router(ingestion_router, prefix="/api")
