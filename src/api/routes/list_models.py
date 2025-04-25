@@ -1,5 +1,4 @@
 import os
-import string
 from fastapi import APIRouter
 
 MODELS_DIR = "models"

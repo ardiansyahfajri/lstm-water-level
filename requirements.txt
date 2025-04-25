@@ -1,8 +1,17 @@
-pandas
-fastapi
-uvicorn
-python-multipart
-PyWavelets
-tensorflow
-scikit-learn
-openpyxl
+# Core ML and data
+tensorflow==2.19.0
+scikit-learn==1.6.1
+numpy==2.1.3
+pandas==2.2.3
+PyWavelets==1.8.0
+openpyxl==3.1.5
+
+# API
+fastapi==0.115.11
+uvicorn==0.34.0
+python-multipart==0.0.20
+requests==2.32.3
+
+# Streamlit frontend
+streamlit==1.44.1
+plotly==6.0.1
