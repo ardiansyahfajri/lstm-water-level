@@ -10,7 +10,7 @@ from tensorflow.keras import regularizers
 
 FEATURES_DIR = "data/features/"
 MODELS_DIR = "models/"
-DATABASE_DIR = "database/"
+STATS_DIR = "data/stats/"
 
 def create_sequences(data, input_len=7, output_len=5, target_index=3):
     X, y = [], []
@@ -51,9 +51,9 @@ def train_lstm_for_dam(dam_name: str, input_len=7, output_len=5, batch_size=64,
         X_train, y_train = create_sequences(df.values, input_len, output_len, target_index=3)
         X_val, y_val = None, None
 
-    os.makedirs(DATABASE_DIR, exist_ok=True)
-    train_mean.to_frame().T.to_csv(os.path.join(DATABASE_DIR, f"{dam_name}_train_mean.csv"), index=False)
-    train_std.to_frame().T.to_csv(os.path.join(DATABASE_DIR, f"{dam_name}_train_std.csv"), index=False)
+    os.makedirs(STATS_DIR, exist_ok=True)
+    train_mean.to_frame().T.to_csv(os.path.join(STATS_DIR, f"{dam_name}_train_mean.csv"), index=False)
+    train_std.to_frame().T.to_csv(os.path.join(STATS_DIR, f"{dam_name}_train_std.csv"), index=False)
 
     input_layer = Input(shape=(input_len, df.shape[1]))
     encoder = LSTM(128, activation='relu', kernel_regularizer=regularizers.l2(0.02))(input_layer)

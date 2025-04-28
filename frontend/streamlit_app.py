@@ -3,7 +3,7 @@ import pandas as pd
 import plotly.graph_objects as go
 import requests
 
-API_BASE = 'http://localhost:8080/api'
+API_BASE = 'http://localhost:8000/api'
 
 st.set_page_config(page_title='Dam Water Level Prediction', layout="centered")
 st.title('Dam Water Level Forecasting')

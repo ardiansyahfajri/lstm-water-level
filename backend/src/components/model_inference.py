@@ -4,7 +4,7 @@ import pandas as pd
 import tensorflow as tf
 from src.components.feature_engineering import apply_feature_engineering
 
-DATABASE_DIR = "database/"
+STATS_DIR = "data/stats/"
 MODELS_DIR = "models/"
 UPLOAD_DIR = "data/uploads/"
 TEMP_PROCESSED_DIR = "data/processed/"
@@ -43,8 +43,8 @@ def predict_next_5_days(dam_name: str, raw_file_path: str, n_iter: int = 100):
         raise ValueError("Engineered data must contain at least 7 rows")
     X_input = df.tail(7)
 
-    mean_path = os.path.join(DATABASE_DIR, f"{dam_name}_train_mean.csv")
-    std_path = os.path.join(DATABASE_DIR, f"{dam_name}_train_std.csv")
+    mean_path = os.path.join(STATS_DIR, f"{dam_name}_train_mean.csv")
+    std_path = os.path.join(STATS_DIR, f"{dam_name}_train_std.csv")
     train_mean = pd.read_csv(mean_path)
     train_std = pd.read_csv(std_path)
     columns = train_mean.columns
