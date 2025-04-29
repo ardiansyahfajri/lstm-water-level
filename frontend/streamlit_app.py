@@ -11,24 +11,28 @@ st.set_page_config(page_title='Dam Water Level Prediction', layout="centered")
 st.title('Dam Water Level Forecasting')
 
 # Model Selection
-st.header('Model Selection')
+st.header('Manage Models')
 
-model_action = st.radio(
-    'Select Existing Model or Create New Model',
-    ['Select Existing Model', 'Create New Model']
-)
+model_action = st.radio("Choose:", ["Select Existing Model", "Create New Model"])
 model_name = None
 
-if model_action == 'Select Existing Model':
-    response = requests.get(f'{API_BASE}/models')
+if model_action == "Select Existing Model":
+    response = requests.get(f"{API_BASE}/models")
     if response.status_code == 200:
         model_list = response.json()
         if model_list:
-            model_name = st.selectbox('Choose a model to use:', model_list)
+            model_name = st.selectbox("Available models:", model_list)
+            if st.button("Delete Selected Model"):
+                delete_response = requests.delete(f"{API_BASE}/models/{model_name}")
+                if delete_response.status_code == 200:
+                    st.success(f"Model '{model_name}' deleted successfully!")
+                    st.experimental_rerun()  # Refresh model list
+                else:
+                    st.error(f"Failed to delete model: {delete_response.text}")
         else:
-            st.info('No models available. Please create a new model.')
+            st.info("No models found.")
     else:
-        st.error('Failed to fetch models list.')
+        st.error("Failed to fetch model list.")
         
 else:
     model_name = st.text_input('Enter a new model name:')
