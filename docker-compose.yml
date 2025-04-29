@@ -1,17 +1,19 @@
-version: '3.9'
-
 services:
   backend:
-    build:
-      context: ./backend
+    # build:
+    #   context: ./backend
+    image: backend
     container_name: backend
     ports:
       - "8000:8000"
     restart: always
+    networks:
+      - appnet
 
   frontend:
-    build:
-      context: ./frontend
+    # build:
+    #   context: ./frontend
+    image: frontend
     container_name: frontend
     ports:
       - "8501:8501"
@@ -20,3 +22,8 @@ services:
     depends_on:
       - backend
     restart: always
+    networks:
+      - appnet
+
+networks:
+  appnet:

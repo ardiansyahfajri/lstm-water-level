@@ -26,7 +26,7 @@ if model_action == "Select Existing Model":
                 delete_response = requests.delete(f"{API_BASE}/models/{model_name}")
                 if delete_response.status_code == 200:
                     st.success(f"Model '{model_name}' deleted successfully!")
-                    st.experimental_rerun()  # Refresh model list
+                    st.rerun()  # Refresh model list
                 else:
                     st.error(f"Failed to delete model: {delete_response.text}")
         else:
