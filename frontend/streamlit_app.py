@@ -2,8 +2,10 @@ import streamlit as st
 import pandas as pd
 import plotly.graph_objects as go
 import requests
+import os
 
-API_BASE = 'http://localhost:8000/api'
+API_BASE = os.getenv("API_BASE", "http://localhost:8000/api")
+# API_BASE = 'http://localhost:8000/api'
 
 st.set_page_config(page_title='Dam Water Level Prediction', layout="centered")
 st.title('Dam Water Level Forecasting')

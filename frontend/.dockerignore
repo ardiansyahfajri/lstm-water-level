@@ -1,0 +1,30 @@
+# Ignore Python cache files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.pyc
+
+# Ignore environment folders
+venv/
+.env/
+env/
+
+# Ignore logs and temp files
+*.log
+*.tmp
+*.swp
+
+# Ignore version control
+.git/
+.gitignore
+
+# Ignore Jupyter notebooks
+*.ipynb
+
+# Ignore MacOS files
+.DS_Store
+
+# Ignore Docker system files
+docker-compose.yml
+Dockerfile
